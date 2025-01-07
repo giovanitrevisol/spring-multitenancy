@@ -1,3 +1,16 @@
+# macos files
+.DS_Store
+
+# docker files
+.dockerignore
+.docker
+
+# intellij files
+.idea
+
+#gradle files
+.gradle
+
 # Compiled class file
 *.class
 

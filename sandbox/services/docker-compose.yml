@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres_poc_multi_tenant:
+    image: postgres:15.3
+    container_name: postgres_poc_multi_tenant
+    environment:
+      POSTGRES_USER: g2dev
+      POSTGRES_PASSWORD: g2dev-123456
+      POSTGRES_DB: poc_multi_tenant
+      POSTGRES_ROOT_HOST: '%'
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../.docker/postgres_poc:/var/lib/postgresql/data
+
+volumes:
+  postgres_bff:
+        driver: local
