@@ -1,18 +1,31 @@
 version: '3.8'
 
 services:
-  postgres_poc_multi_tenant:
+  postgres_tenant:
     image: postgres:15.3
-    container_name: postgres_poc_multi_tenant
+    container_name: postgres_tenant
     environment:
       POSTGRES_USER: g2dev
       POSTGRES_PASSWORD: g2dev-123456
-      POSTGRES_DB: poc_multi_tenant
+      POSTGRES_DB: tenant1
       POSTGRES_ROOT_HOST: '%'
     ports:
       - "5432:5432"
     volumes:
-      - ../.docker/postgres_poc:/var/lib/postgresql/data
+      - ../.docker/postgres_tenant:/var/lib/postgresql/data
+
+  postgres_tenant_2:
+    image: postgres:15.3
+    container_name: postgres_tenant_2
+    environment:
+      POSTGRES_USER: g2dev
+      POSTGRES_PASSWORD: g2dev-123456
+      POSTGRES_DB: tenant2
+      POSTGRES_ROOT_HOST: '%'
+    ports:
+      - "5433:5432"
+    volumes:
+      - ../.docker/postgres_tenant2:/var/lib/postgresql/data
 
 volumes:
   postgres_bff:
