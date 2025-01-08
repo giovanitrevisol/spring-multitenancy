@@ -6,15 +6,15 @@ defaultTenant: tenant_1
 spring:
   application:
     name: multitenancy
-  datasource:
-    url: jdbc:postgresql://localhost:5432/poc_multi_tenant
-    username: g2dev
-    password: g2dev-123456
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/poc_multi_tenant
+#    username: g2dev
+#    password: g2dev-123456
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
