@@ -3,7 +3,7 @@
 This is a sample application that demonstrates how to build a multitenant application using Spring Boot.
 
 This example uses a separete database for each tenant.<br/>
-<img src="documentation/separate_database.png" alt="separate_database" height="500"/>
+<img src="documentation/master_multitenanty_multischema.png" alt="master_multitenanty_multischema" height="500"/>
 
 
 ## Running the application

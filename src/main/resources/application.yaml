@@ -1,14 +1,25 @@
 server:
   port: 8080
 
-defaultTenant: tenant_1
+#defaultTenant: master
 
 spring:
   application:
     name: multitenancy
+  datasource:
+    url: jdbc:postgresql://localhost:5432/master
+    username: g2dev
+    password: g2dev-master
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+      idle-timeout: 10000
+      pool-name: HikariCP
+      max-lifetime: 60000
+      connection-timeout: 30000
+
   flyway:
-    enabled: false # Desabilitamos a execução automática para gerenciar manualmente.
-    locations: classpath:db/migration
-#    schemas: tenant_1, tenant_2
-#    database: tenant_1, tenant_2
-#    baseline-on-migrate: true
+    enabled: true # Desabilitamos a execução automática para gerenciar manualmente.
+    locations: classpath:db/migration/master
+    baseline-on-migrate: true

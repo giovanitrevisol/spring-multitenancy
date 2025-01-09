@@ -1,32 +1,45 @@
 version: '3.8'
 
 services:
+  postgres_master:
+    image: postgres:15.3
+    container_name: postgres_master
+    environment:
+      POSTGRES_USER: g2dev
+      POSTGRES_PASSWORD: g2dev-master
+      POSTGRES_DB: master
+      POSTGRES_ROOT_HOST: '%'
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../.docker/postgres_master:/var/lib/postgresql/data
+
   postgres_tenant:
     image: postgres:15.3
-    container_name: postgres_tenant
+    container_name: postgres_tenant1
     environment:
       POSTGRES_USER: g2dev
       POSTGRES_PASSWORD: g2dev-123456
       POSTGRES_DB: tenant1
       POSTGRES_ROOT_HOST: '%'
     ports:
-      - "5432:5432"
-    volumes:
-      - ../.docker/postgres_tenant:/var/lib/postgresql/data
-
-  postgres_tenant_2:
-    image: postgres:15.3
-    container_name: postgres_tenant_2
-    environment:
-      POSTGRES_USER: g2dev
-      POSTGRES_PASSWORD: g2dev-123456
-      POSTGRES_DB: tenant2
-      POSTGRES_ROOT_HOST: '%'
-    ports:
       - "5433:5432"
     volumes:
-      - ../.docker/postgres_tenant2:/var/lib/postgresql/data
+      - ../.docker/postgres_tenant1:/var/lib/postgresql/data
+
+#  postgres_tenant_2:
+#    image: postgres:15.3
+#    container_name: postgres_tenant_2
+#    environment:
+#      POSTGRES_USER: g2dev
+#      POSTGRES_PASSWORD: g2dev-123456
+#      POSTGRES_DB: tenant2
+#      POSTGRES_ROOT_HOST: '%'
+#    ports:
+#      - "5433:5432"
+#    volumes:
+#      - ../.docker/postgres_tenant2:/var/lib/postgresql/data
 
 volumes:
-  postgres_bff:
+  postgres_master:
         driver: local

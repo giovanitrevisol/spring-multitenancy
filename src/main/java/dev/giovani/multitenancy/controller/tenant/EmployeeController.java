@@ -1,4 +1,4 @@
-package dev.giovani.multitenancy.controller;
+package dev.giovani.multitenancy.controller.tenant;
 
 import dev.giovani.multitenancy.domain.Employee;
 import dev.giovani.multitenancy.repository.EmployeeRepository;
