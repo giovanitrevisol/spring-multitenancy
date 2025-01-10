@@ -1,12 +1,21 @@
 //package dev.giovani.multitenancy.config;
 //
 //import com.zaxxer.hikari.HikariDataSource;
+//import dev.giovani.multitenancy.domain.master.TenantClient;
+//import dev.giovani.multitenancy.repository.TenantClientRepository;
+//import jakarta.annotation.PostConstruct;
+//import lombok.AllArgsConstructor;
+//import lombok.RequiredArgsConstructor;
+//import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.boot.context.properties.ConfigurationProperties;
 //import org.springframework.boot.jdbc.DataSourceBuilder;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
+//import org.springframework.context.annotation.DependsOn;
+//import org.springframework.context.annotation.Lazy;
 //import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+//import org.springframework.stereotype.Service;
 //
 //import javax.sql.DataSource;
 //import java.io.File;
@@ -14,15 +23,17 @@
 //import java.io.IOException;
 //import java.nio.file.Paths;
 //import java.util.HashMap;
+//import java.util.List;
 //import java.util.Map;
 //import java.util.Properties;
-//
 //
 //@Configuration
 //public class MultitenantConfiguration {
 //
+//
 //    @Value("${defaultTenant}")
 //    private String defaultTenant;
+//
 //
 //    @Bean
 //    @ConfigurationProperties(prefix = "tenants")
@@ -33,7 +44,6 @@
 //
 //        for (File propertyFile : files) {
 //            Properties tenantProperties = new Properties();
-////            DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 //            try {
 //                tenantProperties.load(new FileInputStream(propertyFile));
 //                String tenantId = tenantProperties.getProperty("name");
